@@ -132,7 +132,7 @@ def respond(voice_data):
         except:
             speak('oops, something went wrong')
     if checker(["exit", "quit", "goodbye", "see you later", "see ya later", "later gator"]):
-        speak("going offline")
+        speak("goodbye")
         exit()
 
 time.sleep(5)

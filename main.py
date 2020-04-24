@@ -147,7 +147,7 @@ def respond(voice_data):
         speak("goodbye")
         exit()
 
-time.sleep(5)
+time.sleep(6)
 
 while(1):
     voice_data = record_audio() 

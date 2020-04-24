@@ -24,7 +24,7 @@ def dbConnection(host_name, user_name, user_password, db_name):
 
     return conn
 
-conn = dbConnection("localhost", "root", "Zvmspw27", "jarvis")
+conn = dbConnection("localhost", "root", os.environ.get('DBPassword'), "jarvis")
 
 def execute_read_query(conn, query):
     cursor = conn.cursor()

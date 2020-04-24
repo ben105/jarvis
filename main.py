@@ -44,8 +44,6 @@ def checker(terms):
         if term in voice_data:
             return True
 
-
-
 r = speech.Recognizer() 
 
 def record_audio(ask=False):
@@ -63,19 +61,14 @@ def record_audio(ask=False):
         print(f"-- {voice_data.lower()}")
         return voice_data.lower()
 
-
-
-# get string and make a audio file to be played
 def speak(audio_string):
-    tts = gTTS(text=audio_string, lang='en') # text to speech(voice)
+    tts = gTTS(text=audio_string, lang='en') 
     r = random.randint(1,20000000)
     audio_file = 'audio' + str(r) + '.mp3'
-    tts.save(audio_file) # save as mp3
-    playsound.playsound(audio_file) # play the audio file
-    print(f"Jarvis: {audio_string}") # print what app said
-    os.remove(audio_file) # remove audio file
-
-
+    tts.save(audio_file)
+    playsound.playsound(audio_file)
+    print(f"Jarvis: {audio_string}") 
+    os.remove(audio_file) 
 
 def respond(voice_data):
    
@@ -87,8 +80,6 @@ def respond(voice_data):
     
     if checker(["how are you","how are you doing", "how's life", "how's it hanging"]):
         speak(f"I'm doing fantastic, thanks for asking {myName}!")
-    
-    
  
     if checker(['what is your name',"what's your name",'tell me your name', 'who are you', 'tell me who you are' ]):
         if myName:
@@ -99,11 +90,7 @@ def respond(voice_data):
     if checker(["my name is"]):
         new_name = voice_data.split("is")[-1].strip()
         speak(f"So very nice to meet you {new_name}")
-       
-
- 
-
-
+   
     if checker(["what's the time","tell me the time","what time is it"]):
         time = ctime().split(" ")[3].split(":")[0:2]
         if time[0] == "00":
@@ -114,13 +101,11 @@ def respond(voice_data):
         time = f'{hours} {minutes}'
         speak(time)
 
-
     if checker(["search for"]) and 'youtube' not in voice_data:
         search = voice_data.split("for")[-1]
         url = f"https://google.com/search?q={search}"
         webbrowser.get().open(url)
         speak(f'Here is what I found for {search} on google')
-
 
     if checker(["youtube"]):
         search = voice_data.split("for")[-1]
@@ -128,15 +113,15 @@ def respond(voice_data):
         webbrowser.get().open(url)
         speak(f'Here is what I found for {search} on youtube')
 
-
     if checker(["price of"]):
         search = voice_data.lower().split(" of ")[-1].strip() 
         stocks = {
             "apple":"AAPL",
-            "microsoft":"MSFT",
+            "bitcoin":"BTC-USD",
             "facebook":"FB",
-            "tesla":"TSLA",
-            "bitcoin":"BTC-USD"
+            "microsoft":"MSFT",
+            "tesla":"TSLA"
+           
         }
         try:
             stock = stocks[search]
@@ -149,7 +134,6 @@ def respond(voice_data):
     if checker(["exit", "quit", "goodbye", "see you later", "see ya later", "later gator"]):
         speak("going offline")
         exit()
-
 
 time.sleep(5)
 

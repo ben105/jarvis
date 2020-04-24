@@ -22,7 +22,7 @@ Newer versions of python may have an issue installing PyAudio
 
 If so, download .whl file from https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio and place it into your program directory
 
-Then, use "pip install <relative path to file>"
+Then, use "pip install (relative path to file)"
 
 ### Commands
 
